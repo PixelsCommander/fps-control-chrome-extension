@@ -1,8 +1,9 @@
-#FPS control Chrome extension
+FPS control Chrome extension
+=======
 
 Control FPS in your browser for testing or performance investigation. Check if your app can take being stressed out with dropped frames or low FPS.
 
-##Work in progress
+*Work in progress*
 
 License
 -------
