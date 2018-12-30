@@ -1,7 +1,7 @@
 {
   "name": "FPS-control-chrome-extension",
   "version": "0.0.1",
-  "description": "Control FPS in your browser for testing or performance investigation. Check if your app can take being stressed out with dropped frames or low FPS.",
+  "description": "Control FPS in your browser for testing, performance investigation or to stress your app with dropped frames.",
   "scripts": {
     "build": "node utils/build.js",
     "start": "node utils/webserver.js"
