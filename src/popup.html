@@ -12,6 +12,14 @@
       font-weight: bold;
       padding-bottom: 10px;
     }
+
+    .separator {
+      padding: 10px;
+    }
+
+    select {
+      width: 100px;
+    }
   </style>
 </head>
 <body>
@@ -21,6 +29,16 @@
     <option id="dropFrames0.9" value="0.9">90%</option>
     <option id="dropFrames0.5" value="0.5">50%</option>
     <option id="dropFrames0.25" value="0.25">25%</option>
+  </select>
+
+  <div class="separator"></div>
+
+  <label for="limitfps">Limit FPS</label>
+  <select id="limitfps">
+    <option id="limitfps0" value="0">No limit</option>
+    <option id="limitfps30" value="30">30FPS</option>
+    <option id="limitfps10" value="10">10FPS</option>
+    <option id="limitfps2" value="2">2FPS</option>
   </select>
 </body>
 </html>

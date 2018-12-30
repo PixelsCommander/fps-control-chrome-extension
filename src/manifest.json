@@ -1,5 +1,5 @@
 {
-  "name": "FPS Control Chrome Extension",
+  "name": "FPS Control",
   "description":"Control FPS in your browser for testing or performance investigation. Check if your app can take being stressed out with dropped frames or low FPS.",
   "options_page": "options.html",
   "background": {
