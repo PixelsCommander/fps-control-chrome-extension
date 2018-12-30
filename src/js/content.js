@@ -62,7 +62,7 @@ var raf = window.requestAnimationFrame;
 var nextRAFTime = Date.now();
 
 var mockedRaf = (callback) => {
-    var skip = Math.random() < window.skipProcent || Date.now() < nextRAFTime;
+    var skip = (window.maxFPS !== 0 && Date.now() < nextRAFTime) || Math.random() < window.skipProcent;
     
     if (skip) {
         skippingRaf(callback);
