@@ -3,12 +3,18 @@ import '../css/popup.css';
 window.addEventListener('DOMContentLoaded', function () {
     var dropFramesSelect = document.getElementById('dropframes');
 
-    chrome.runtime.onMessage.addListener((message) => {
-        switch (message.type) {
-            case "dropFrames":
-                dropFramesSelect.value=message.value.toString();
-                break;
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message.type === 'setPopupState') {
+            var percentage = message.value.dropFrames.toString();
+            document.getElementById('dropFrames' + percentage).selected = true;
+            dropFramesSelect.value = percentage;
         }
+    });
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            type: 'getPopupState',
+        });
     });
 
     function sendDropFrames(e) {

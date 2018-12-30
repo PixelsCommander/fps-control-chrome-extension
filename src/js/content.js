@@ -1,16 +1,43 @@
+let dropFrames = 0;
+
+function alertV(s) {
+    var elt = document.createElement("script");
+    elt.innerHTML = `alert('${s}')`;
+    document.head.appendChild(elt);
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.type) {
+        case 'getPopupState':
+            sendResponse({
+                type: 'setPopupState',
+                value: {
+                    dropFrames: dropFrames,
+                }
+            });
+
+            chrome.runtime.sendMessage({
+                type: 'setPopupState',
+                value: {
+                    dropFrames: dropFrames,
+                }
+            });
+
+            break;
         case 'dropFrames':
             processDropFrames(message.value);
-            sendResponse(message);
+            break;
+        default:
             break;
     }
 });
 
 function processDropFrames(percentage) {
+    dropFrames = percentage || 0;
+
     if (!percentage) {
         var elt = document.createElement("script");
-        elt.innerHTML = `window.disableDropFPS(); alert(dropFrames page);`;
+        elt.innerHTML = `window.disableDropFPS();`;
         document.head.appendChild(elt);
     } else {
         var elt = document.createElement("script");
@@ -20,7 +47,7 @@ function processDropFrames(percentage) {
 }
 
 var scriptContent = `
-window.skipProcent = 0.9;
+window.skipProcent = ${dropFrames};
 var rafs = 0;
 
 var raf = window.requestAnimationFrame;
